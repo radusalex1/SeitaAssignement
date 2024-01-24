@@ -5,7 +5,7 @@ To run project:
 4. pip install -r requirements.txt
 5. to run the project: python rest_api.py
 6. to test the endpoints, you can use postman or any other tool you wish.
-
+7. to run tests, run this command in a terminat: python -m pytest -v tests_rest_api.py
 
 
 Get /forecasts 

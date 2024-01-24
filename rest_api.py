@@ -13,11 +13,24 @@ def get_forecasts():
     # Get the parameters
     now = request.args.get('now')
     then = request.args.get('then')
+
+    if now == None:
+        return jsonify({'error':"Missing 'now' parameter"})
     
+    if then == None:
+        return jsonify({'error':"Missing 'then' parameter"})
+
     # Convert them to datetime
-    now = datetime.datetime.fromisoformat(now)
-    then = datetime.datetime.fromisoformat(then)
+    try:
+        now = datetime.datetime.fromisoformat(now)
+    except Exception:
+        return jsonify({'error':"Parameter 'now' is wrong formated.Please provide iso format"})
     
+    try:
+        then = datetime.datetime.fromisoformat(then)
+    except Exception:
+        return jsonify({'error':"Parameter 'then' is wrong formated.Please provide iso format"})
+
     results_now = []
     results_then = []
 
